@@ -1,0 +1,92 @@
+############ FW ##############
+
+int g1/1
+nameif LAN1
+security-level 100
+ip add 10.20.20.34 255.255.255.252
+no shut
+exit
+
+int g1/2
+nameif LAN2
+security-level 100
+ip add 10.20.20.38 255.255.255.252
+no shut
+exit
+
+int g1/3
+nameif WAN
+security-level 0
+ip add 105.100.50.1 255.255.255.252
+no shut
+exit
+
+int g1/4
+nameif DMZ
+security-level 70
+ip add 10.20.20.1 255.255.255.224
+no shut
+exit
+
+write memory
+
+
+############ MLSW1 ##############
+
+ip routing
+int g1/0/1
+no switchport
+ip add 10.20.20.33 255.255.255.252
+exit
+
+do write
+
+
+############ MLSW2 ##############
+
+ip routing
+int g1/0/1
+no switchport
+ip add 10.20.20.37 255.255.255.252
+exit
+
+do write
+
+
+############ ISP ##############
+
+hostname ISP
+
+int g0/0
+ip add 105.100.50.2 255.255.255.252
+no shut
+exit
+
+int s0/0/0
+ip add 20.20.20.2 255.255.255.0
+no shut 
+exit
+
+do write
+
+
+############ INTERNET ##############
+
+hostname INTERNET
+
+int g0/0
+ip add 8.0.0.1 255.0.0.0
+no shut
+exit
+
+int s0/0/0
+ip add 20.20.20.1 255.255.255.0
+no shut
+exit
+
+int s0/0/0
+ip add 30.30.30.1 255.255.255.0
+no shut
+exit
+
+do write

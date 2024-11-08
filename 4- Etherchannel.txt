@@ -1,0 +1,7 @@
+int ra g1/0/7-9
+channel-group 1 mode active
+int port 1
+switchport mode trunk 
+exit
+
+do write

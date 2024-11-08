@@ -1,0 +1,34 @@
+en
+conf t
+
+hostname MLSW2
+
+line console 0
+password cisco
+login
+exec-timeout 60 0
+exit
+
+enable password cisco
+
+banner motd #UNAUTHORIZED USERS ARE NOT ALLOWED!!!!#
+
+no ip domain-lookup
+
+username admin password SARA
+ip domain-name cisco.com
+crypto key generate rsa general-keys modulus 1024
+ip ssh version 2
+
+service password-encryption
+
+access-list 2 permit 192.168.10.0 0.0.0.255
+access-list 2 deny any
+
+line vty 0 15
+login local
+transport input ssh
+access-class 2 in
+exit
+
+do write

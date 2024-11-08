@@ -1,0 +1,64 @@
+############ HQ-MLSW1 ############
+
+router ospf 1
+router-id 1.1.1.1
+network 192.168.10.0 0.0.0.255 area 0
+network 172.16.0.0 0.0.255.255 area 0
+network 172.16.1.0 0.0.255.255 area 0
+network 172.16.2.0 0.0.255.255 area 0
+network 172.16.3.0 0.0.255.255 area 0
+network 172.16.4.0 0.0.255.255 area 0
+network 172.16.5.0 0.0.255.255 area 0
+network 10.20.20.32 0.0.0.3 area 0
+exit
+
+do write
+
+
+############ HQ-MLSW2 ############
+
+router ospf 1
+router-id 2.2.2.2
+network 192.168.10.0 0.0.0.255 area 0
+network 172.16.0.0 0.0.255.255 area 0
+network 172.16.1.0 0.0.255.255 area 0
+network 172.16.2.0 0.0.255.255 area 0
+network 172.16.3.0 0.0.255.255 area 0
+network 172.16.4.0 0.0.255.255 area 0
+network 172.16.5.0 0.0.255.255 area 0
+network 10.20.20.36 0.0.0.3 area 0
+exit
+
+do write
+
+
+############ HQ-FW ############
+
+router ospf 1
+network 10.20.20.0 255.255.255.224 area 0
+network 10.20.20.32 255.255.255.252 area 0
+network 10.20.20.36 255.255.255.252 area 0
+network 105.100.50.0 255.255.255.252 area 0
+exit
+
+write memory
+
+
+############ HQ-ISP ############
+
+router ospf 1
+network 20.20.20.0 0.0.0.255 area 0
+network 105.100.50.0 0.0.0.3 area 0
+exit
+
+do write
+
+
+############ INTERNET ############
+
+router ospf 1
+network 20.20.20.0 0.0.0.255 area 0
+network 8.0.0.0 0.255.255.255 area 0
+exit
+
+do write

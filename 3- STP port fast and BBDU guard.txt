@@ -1,0 +1,18 @@
+##################### HQ-DMZ ########################
+
+int ra f0/2-24
+spanning-tree portfast 
+spanning-tree bpduguard enable 
+exit
+
+do write
+
+
+################## Access layer SWs ###################
+
+int ra f0/3-24
+spanning-tree portfast 
+spanning-tree bpduguard enable 
+exit
+
+do write

@@ -1,0 +1,97 @@
+##################### Port Security ######################
+
+####### Access Layer Switches #######
+## Interfaces connected to end devices ##
+
+int ra f0/3-20
+switchport port-security 
+switchport port-security maximum 1
+switchport port-security violation shutdown 
+exit 
+
+do write
+
+
+## Interfaces connected to APs ##
+
+int ra f0/21-24
+switchport port-security 
+switchport port-security maximum 10
+switchport port-security violation restrict 
+switchport port-security mac-address sticky 
+exit 
+
+do write
+
+
+### Only IT-SW ###
+
+int ra g0/1-2
+switchport port-security 
+switchport port-security maximum 1
+switchport port-security violation shutdown 
+exit 
+
+do write
+
+
+### DMZ-SW ###
+
+int ra f0/2-7
+switchport mode access 
+switchport port-security 
+switchport port-security mac-address <MAC-address>
+switchport port-security violation shutdown
+exit
+
+int ra f0/8-24 , g0/1-2
+shutdown
+exit
+
+do write
+
+
+##################### DAI, DHCP Snooping ######################
+####### Access Layer Switches #######
+
+ip dhcp snooping 
+ip dhcp snooping vlan <VLAN-ID>
+ip arp inspection vlan <VLAN-ID>
+
+int ra f0/1-2
+ip arp inspection trust
+ip dhcp snooping trust 
+
+int ra f0/3-24
+ip dhcp snooping limit rate 10
+exit
+
+do write
+
+
+##################### Mitigate VLAN Attacks ######################
+
+####### Access Layer Switches #######
+
+vlan 100
+name NATIVE
+
+int ra f0/1-2
+switchport nonegotiate
+switchport trunk native vlan 100
+exit
+
+do write 
+
+
+####### Access Layer Switches #######
+
+vlan 100
+name NATIVE
+
+int ra g1/0/2-6
+switchport nonegotiate
+switchport trunk native vlan 100
+exit
+
+do write

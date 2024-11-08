@@ -1,0 +1,195 @@
+##################### MultiLayer Switches ########################
+
+vlan 10
+name MGMT
+vlan 20
+name H&S
+vlan 30
+name BUS
+vlan 40
+name ENG/COMP
+vlan 50
+name ARTD
+vlan 60
+name IT
+
+int ra g1/0/2-6           
+switchport mode trunk 
+exit
+
+do write
+
+
+################# Access Layer Switches ##################
+######## H&S ########
+
+vlan 10
+name MGMT
+vlan 20
+name H&S
+vlan 30
+name BUS
+vlan 40
+name ENG/COMP
+vlan 50
+name ARTD
+vlan 60
+name IT
+vlan 199
+name BlackHole
+
+int ra f0/1-2
+switchport mode trunk
+exit
+
+int ra f0/3-24
+switchport mode access 
+switchport access vlan 20
+exit
+
+int ra g0/1-2
+switchport mode access 
+switchport access vlan 199
+shut
+exit
+
+do write
+
+
+######## BUS-SW ########
+
+vlan 10
+name MGMT
+vlan 20
+name H&S
+vlan 30
+name BUS
+vlan 40
+name ENG/COMP
+vlan 50
+name ARTD
+vlan 60
+name IT
+vlan 199
+name BlackHole
+
+int ra f0/1-2
+switchport mode trunk
+exit
+
+int ra f0/3-24
+switchport mode access 
+switchport access vlan 30
+exit
+
+int ra g0/1-2
+switchport mode access 
+switchport access vlan 199
+shut
+exit
+
+do write
+
+
+######## ENG/COMP-SW ########
+
+vlan 10
+name MGMT
+vlan 20
+name H&S
+vlan 30
+name BUS
+vlan 40
+name ENG/COMP
+vlan 50
+name ARTD
+vlan 60
+name IT
+vlan 199
+name BlackHole
+
+int ra f0/1-2
+switchport mode trunk
+exit
+
+int ra f0/3-24
+switchport mode access 
+switchport access vlan 40
+exit
+
+int ra g0/1-2
+switchport mode access 
+switchport access vlan 199
+shut
+exit
+
+do write
+
+
+######## ARTD-SW ########
+
+vlan 10
+name MGMT
+vlan 20
+name H&S
+vlan 30
+name BUS
+vlan 40
+name ENG/COMP
+vlan 50
+name ARTD
+vlan 60
+name IT
+vlan 199
+name BlackHole
+
+int ra f0/1-2
+switchport mode trunk
+exit
+
+int ra f0/3-24
+switchport mode access 
+switchport access vlan 50
+exit
+
+int ra g0/1-2
+switchport mode access 
+switchport access vlan 199
+shut
+exit
+
+do write
+
+#################### IT-SW ####################
+
+vlan 10
+name MGMT
+vlan 20
+name H&S
+vlan 30
+name BUS
+vlan 40
+name ENG/COMP
+vlan 50
+name ARTD
+vlan 60
+name IT
+
+
+int ra f0/1-2
+switchport mode trunk
+exit
+
+int ra f0/3-24
+switchport mode access 
+switchport access vlan 60
+exit
+
+int ra g0/1-2
+switchport mode access 
+switchport access vlan 10
+exit
+
+do write
+
+

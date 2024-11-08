@@ -1,0 +1,35 @@
+############### WEB SERVER ###############
+
+1- Enable HTTP, HTTPS service 
+2- Import your files
+3- Write the IP of the web server in the browser of the PC
+
+
+############### EMAIL SERVER ###############
+
+1- Enable Email service
+2- Set Domain Name to any domain name e.g. gmail.com
+3- Add users to the server
+4- In the PC:
+   - Set User Information based on your preferences
+   - Set Server Information to the IP address of your email server
+   - Set login Information the same as the users you added to the email server
+
+
+############### FTP SERVER ###############
+
+1- Enable FTP service
+2- Set username and password on the server
+3- Set the username and password of FTP server on the device
+e.g. copy running-config ftp
+     type IP address of the FTP server
+     type name of the file to upload that will be saved on the server
+
+
+############### DNS SERVER ###############
+
+1- Enable DNS service
+2- Add the name of the record and its corresponding IP
+
+
+

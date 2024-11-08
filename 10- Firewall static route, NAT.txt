@@ -1,0 +1,49 @@
+######################### HQ #########################
+
+route WAN 0.0.0.0 0.0.0.0 105.100.50.2
+
+object network LAN10-OUTSIDE
+subnet 192.168.1.0 255.255.255.0
+nat (LAN1,WAN) dynamic interface 
+object network LAN10-OUTSIDE2
+subnet 192.168.1.0 255.255.255.0
+nat (LAN2,WAN) dynamic interface 
+
+object network LAN20-OUTSIDE
+subnet 172.16.0.0 255.255.0.0
+nat (LAN1,WAN) dynamic interface 
+object network LAN20-OUTSIDE2
+subnet 172.16.0.0 255.255.0.0
+nat (LAN2,WAN) dynamic interface 
+
+object network LAN50-OUTSIDE
+subnet 10.10.0.0 255.255.0.0
+nat (LAN1,WAN) dynamic interface 
+object network LAN50-OUTSIDE2
+subnet 10.10.0.0 255.255.0.0
+nat (LAN2,WAN) dynamic interface 
+exit
+
+witre memory
+
+
+######################### BRANCH #########################
+
+route WAN 0.0.0.0 0.0.0.0 205.200.100.2
+
+object network LAN60-OUTSIDE
+subnet 172.17.0.0 255.255.0.0
+nat (LAN1,WAN) dynamic interface 
+object network LAN60-OUTSIDE2
+subnet 172.17.0.0 255.255.0.0
+nat (LAN2,WAN) dynamic interface 
+
+object network LAN90-OUTSIDE
+subnet 10.11.0.0 255.255.0.0
+nat (LAN1,WAN) dynamic interface 
+object network LAN90-OUTSIDE2
+subnet 10.11.0.0 255.255.0.0
+nat (LAN2,WAN) dynamic interface 
+exit
+
+witre memory

@@ -1,0 +1,92 @@
+############ MLSW1 ############
+
+int vlan 10
+ip add 192.168.10.2 255.255.255.0
+standby 10 ip 192.168.10.1
+ip helper-address 10.20.20.2
+ip helper-address 10.20.20.3
+exit
+
+int vlan 20
+ip add 172.16.1.2 255.255.255.0
+standby 20 ip 172.16.1.1
+ip helper-address 10.20.20.2
+ip helper-address 10.20.20.3
+exit
+
+int vlan 30
+ip add 172.16.2.2 255.255.255.0
+standby 30 ip 172.16.2.1
+ip helper-address 10.20.20.2
+ip helper-address 10.20.20.3
+exit
+
+int vlan 40
+ip add 172.16.3.2 255.255.255.0
+standby 40 ip 172.16.3.1
+ip helper-address 10.20.20.2
+ip helper-address 10.20.20.3
+exit
+
+int vlan 50
+ip add 172.16.4.2 255.255.255.0
+standby 50 ip 172.16.4.1
+ip helper-address 10.20.20.2
+ip helper-address 10.20.20.3
+exit
+
+int vlan 60
+ip add 172.16.5.2 255.255.255.0
+standby 60 ip 172.16.5.1
+ip helper-address 10.20.20.2
+ip helper-address 10.20.20.3
+exit
+
+do write
+
+
+############ HQ-MLSW2 ############
+
+int vlan 10
+ip add 192.168.10.3 255.255.255.0
+standby 10 ip 192.168.10.1
+ip helper-address 10.20.20.2
+ip helper-address 10.20.20.3
+exit
+
+int vlan 20
+ip add 172.16.1.3 255.255.255.0
+standby 20 ip 172.16.1.1
+ip helper-address 10.20.20.2
+ip helper-address 10.20.20.3
+exit
+
+int vlan 30
+ip add 172.16.2.3 255.255.255.0
+standby 30 ip 172.16.2.1
+ip helper-address 10.20.20.2
+ip helper-address 10.20.20.3
+exit
+
+int vlan 40
+ip add 172.16.3.3 255.255.255.0
+standby 40 ip 172.16.3.1
+ip helper-address 10.20.20.2
+ip helper-address 10.20.20.3
+exit
+
+int vlan 50
+ip add 172.16.4.3 255.255.255.0
+standby 50 ip 172.16.4.1
+ip helper-address 10.20.20.2
+ip helper-address 10.20.20.3
+exit
+
+int vlan 60
+ip add 172.16.5.3 255.255.255.0
+standby 60 ip 172.16.5.1
+ip helper-address 10.20.20.2
+ip helper-address 10.20.20.3
+exit
+
+do write
